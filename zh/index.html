@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+    <head>
+        <title>OpenTaiko文档说明</title>
+        <link href="../src/style.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    </head>
+    <body>
+        <header>
+            <h1>OpenTaiko文档说明</h1>
+            <h2>为版本0.6.0.0编写</h2>
+        </header>
+        <nav>
+            <h2>导航</h2>
+                <a href="#intro" class="h1">介绍</a>
+
+                <a href="#general" class="h1">通用</a>
+
+                <a href="#gameplay" class="h1">游玩</a>
+
+                <a href="#charting" class="h1">制谱</a>
+                <a href="#note-types" class="h2">音符种类</a>
+                <a href="#taiko-notes" class="h3">太鼓音符</a>
+                <a href="#konga-notes" class="h3">康加鼓音符</a>
+                <a href="#miscellaneous-notes" class="h3">其他音符</a>
+
+                <a href="#skinning" class="h1">皮肤与自定义</a>
+                <a href="#lua-scripting" class="h2">Lua脚本</a>
+                <a href="#calling-functions" class="h3">调用函数</a>
+                <a href="#receiving-functions" class="h3">接收函数</a>
+                <a href="#variables" class="h3">变量</a>
+
+                <a href="#faq" class="h1">常见问题</a>
+        </nav>
+        <content>
+
+            <h1 id="intro">介绍</h1>
+                <p>运行OpenTaiko.exe。这就是介绍。</p>
+
+            <h1 id="general">通用</h1>
+                <p>进入演奏模式。</p>
+
+            <h1 id="gameplay">游玩</h1>
+                <p>击鼓。</p>
+
+            <h1 id="charting">制谱</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos magnam quia veniam adipisci aliquid aliquam accusantium veritatis, iusto facilis harum maxime at unde officia atque temporibus, optio, quasi quidem aspernatur.</p>
+
+                <h2 id="note-types">音符种类</h2>
+                <p>OpenTaiko支持许多音符。其中一些在各张谱面都有普遍支持，尽管有其他一些在其他模式专用，或仅在非普遍场合见到。</p>
+
+                    <h3 id="taiko-notes">太鼓音符</h3>
+                    <p>以下是太鼓普遍用到的音符种类。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>空白</td>
+                                <td>
+                                    <p>空格</p>
+                                    <p>间隔音符所必需，同时为创建复杂结构提供帮助。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>咚</td>
+                                <td>红色音符</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>咔</td>
+                                <td>蓝色音符</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>咚（大）</td>
+                                <td>大红色音符</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>咔（大）</td>
+                                <td>大蓝色音符</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>连打开始</td>
+                                <td>
+                                    <p>连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>连打（大）开始</td>
+                                <td>
+                                    <p>大连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>气球开始</td>
+                                <td>
+                                    <p>气球</p>
+                                    <p>标记气球开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>与连打相似，但是必须在有限时间内击打一定数量以完成。气球的值由BALLOON标签指定。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>长音符结束</td>
+                                <td>标记任意长音符的结束。</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>彩球开始</td>
+                                <td>
+                                    <p>大气球</p>
+                                    <p>标记彩球开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>与连打相似，但是必须在有限时间内击打一定数量以完成。彩球的值由BALLOON标签指定。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>咚（大，两手）</td>
+                                <td>
+                                    <p>大红色音符</p>
+                                    <p>当游玩多人谱面且音符一起对齐时显示连接的手。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>咔（大，两手）</td>
+                                <td>
+                                    <p>大蓝色音符</p>
+                                    <p>当游玩多人谱面且音符一起对齐时显示连接的手。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 id="konga-notes">康加鼓音符</h3>
+                    <p>以下是康加鼓模式普遍用到的音符种类。</p>
+                    <p>当中许多在太鼓使用，但是有一些在此模式专用。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>空白</td>
+                                <td>
+                                    <p>空格</p>
+                                    <p>间隔音符所必需，同时为创建复杂结构提供帮助。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>右</td>
+                                <td>右音符</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>左</td>
+                                <td>左音符</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>双</td>
+                                <td>双音符</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>拍手</td>
+                                <td>拍手音符</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>右连打开始</td>
+                                <td>
+                                    <p>右连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>双连打开始</td>
+                                <td>
+                                    <p>双连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>气球开始</td>
+                                <td>
+                                    <p>气球</p>
+                                    <p>标记气球开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>与连打相似，但是必须在有限时间内击打一定数量以完成。气球的值由BALLOON标签指定。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>长音符结束</td>
+                                <td>标记任意长音符的结束。</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>彩球开始</td>
+                                <td>
+                                    <p>大气球</p>
+                                    <p>标记彩球开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>与连打相似，但是必须在有限时间内击打一定数量以完成。彩球的值由BALLOON标签指定。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">康加鼓限定音符</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>I</td>
+                                <td>左连打开始</td>
+                                <td>
+                                    <p>左连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>在太鼓模式变为小连打。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>H</td>
+                                <td>拍手连打开始</td>
+                                <td>
+                                    <p>拍手连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>在太鼓模式变为大连打。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 id="miscellaneous-notes">其他音符</h3>
+                    <p>以下是所有模式普遍用到的其他音符。</p>
+                    <p>这些音符在普通谱面不会经常使用。您通常只能在噱头谱面中找到它们。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>名称</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>C</td>
+                                <td>炸弹</td>
+                                <td>
+                                    <p>炸弹音符</p>
+                                    <p>玩家应主动避免敲打的音符。如果敲打，切断连击并且猛烈降低魂条。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F</td>
+                                <td>即兴</td>
+                                <td>
+                                    <p>隐形音符</p>
+                                    <p>默认隐形，且无需敲打。如果敲打，播放特殊的声音。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>G</td>
+                                <td>咔咚</td>
+                                <td>
+                                    <p>紫音符</p>
+                                    <p>需要玩家同时敲打咚和咔。在康加鼓模式，这出现为双音符。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>引线连打开始</td>
+                                <td>
+                                    <p>炸弹连打</p>
+                                    <p>标记连打开始。用0延长连打长度，并用8结束连打。</p>
+                                    <p>行为与气球相似，但必须及时吹爆。如果用户失败，它将像炸弹音符那样行为，切断连击并伤害他们当前的魂条。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+            <h1 id="skinning">皮肤与自定义</h1>
+                <p>除了OpenTaiko的默认皮肤，用户可以创建他们自己的皮肤。</p>
+
+                <h2 id="lua-scripting">Lua脚本</h2>
+                <p>OpenTaiko和Lua API（应用程序编程接口）允许创作者更深入个性化他们的皮肤，不仅仅是替换图片和声音，允许更加动态的视觉而不需要更改游戏的源代码。尽管多数菜单有Lua脚本，但是多数脚本在当前仅适合运动背景。Lua API的能力仍在制作中，并且在未来扩展。</p>
+                <p>只读变量也由OpenTaiko提供，允许创作者变换基于他们脚本的一时刻正在发生的行为。</p>
+                <p>Lua可以完成的一些例子包括：</p>
+                <ul>
+                    <li>能够读取BPM、魂条百分数、是否在高潮段、以及各玩家的过关状态、和改变如何使用这些值视觉动画。</li>
+                    <li>检查用户当前使用的语言，允许为皮肤提供本地化支持。</li>
+                    <li>依据太鼓塔进度和AI对战状态变换背景视觉效果。</li>
+                </ul>
+
+                    <h3 id="calling-functions">调用函数</h3>
+                    <p>调用函数，即皮肤向OpenTaiko发送命令执行的函数。</p>
+                    <p>多数函数与您脚本的文件绘制和控制图片相关，不改变游戏本身。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>函数</th>
+                                <th>输入种类</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">控制台绘制</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>func:DrawText(横坐标, 纵坐标, 文本);</td>
+                                <td>数字, 数字, 字符串</td>
+                                <td>使用皮肤的控制台字体（/Graphics/Console_Font.png）绘制文本。</td>
+                            </tr>
+                            <tr>
+                                <td>func:DrawNum(横坐标, 纵坐标, 数字);</td>
+                                <td>数字, 数字, 数字</td>
+                                <td>使用皮肤的控制台字体（/Graphics/Console_Font.png）绘制数字。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">图像绘制</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>func:AddGraph(文件名);</td>
+                                <td>字符串</td>
+                                <td>加载一张用于您的脚本的图像文件。这是绘制函数作用到您图像的基础。</td>
+                            </tr>
+                            <tr>
+                                <td>func:DrawGraph(横坐标, 纵坐标, 文件名);</td>
+                                <td>数字, 数字, 字符串</td>
+                                <td>在一位置绘制给定图像。</td>
+                            </tr>
+                            <tr>
+                                <td>func:DrawGraphCenter(横坐标, 纵坐标, 文件名);</td>
+                                <td>数字, 数字, 字符串</td>
+                                <td>在一给定坐标的中央位置绘制给定图像。</td>
+                            </tr>
+                            <tr>
+                                <td>func:DrawRectGraph(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件名);</td>
+                                <td>数字, 数字, 数字, 数字, 数字, 数字, 字符串</td>
+                                <td>
+                                    <p>在一位置绘制给定图像。</p>
+                                    <p>矩形用于特定指定您要绘制图像的部分。</p>
+                                    <p>如果矩形越出图像的边界，它将循环回来并继续绘制。该方法能用于绘制重复纹理。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>func:DrawGraphRectCenter(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件名);</td>
+                                <td>数字, 数字, 数字, 数字, 数字, 数字, 字符串</td>
+                                <td>
+                                    <p>在一给定坐标的中央位置绘制给定图像。</p>
+                                    <p>矩形用于特定指定您要绘制图像的部分。</p>
+                                    <p>如果矩形越出图像的边界，它将循环回来并继续绘制。该方法能用于绘制重复纹理。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">图像控制</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>func:SetScale(横向比, 纵向比, 文件名)</td>
+                                <td>数字, 数字, 字符串</td>
+                                <td>设置您图像的放大倍率。默认值为1.0。</td>
+                            </tr>
+                            <tr>
+                                <td>func:SetRotation(旋转角度, 文件名)</td>
+                                <td>数字, 字符串</td>
+                                <td>设置您图像的逆时针旋转角度。值通常介于0和360之间。</td>
+                            </tr>
+                            <tr>
+                                <td>func:SetOpacity(不透明度, 文件名)</td>
+                                <td>数字, 字符串</td>
+                                <td>设置您图像的不透明度。值必须介于0和360之间。</td>
+                            </tr>
+                            <tr>
+                                <td>func:SetColor(红, 绿, 蓝, 文件名)</td>
+                                <td>数字, 数字, 数字, 字符串</td>
+                                <td>使用乘法过滤重上色您的图像。所有值必须介于0.0和1.0之间。</td>
+                            </tr>
+                            <tr>
+                                <td>func:SetBlendMode(模式, 文件名)</td>
+                                <td>字符串, 字符串</td>
+                                <td>
+                                    <p>指定图像混合到背景中的方式。</p>
+                                    <p>可用的混合模式有：“Normal”（普通）、“Add”（加法）、“Multi”（乘法）、“Sub”（减法）、“Screen”（穿透）</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 id="receiving-functions">接收函数</h3>
+                    <p>接收函数，即OpenTaiko发送到您脚本的命令。</p>
+                    <p>其中一些函数每帧都调用，尽管其他一些仅在必要时调用。一些又能被多次调用，主要按玩家。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>函数</th>
+                                <th>输入种类</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">通用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function init()</td>
+                                <td>-</td>
+                                <td>当脚本首次加载调用一次。该函数用于初始化数据，包括图像。</td>
+                            </tr>
+                            <tr>
+                                <td>function update()</td>
+                                <td>-</td>
+                                <td>
+                                    <p>每帧调用一次。用于计算并更新值。若游戏暂停则临时停止调用。</p>
+                                    <p>该方法总是在draw()之前调用。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>function draw()</td>
+                                <td>-</td>
+                                <td>每帧调用一次。用于控制和绘制图像。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">仅游玩</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function clearIn(玩家)</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>当玩家到达过关范围时调用一次。玩家值是进入过关范围的玩家编号。</p>
+                                    <p>玩家ID从0开始，到4结束。</p>
+                                    <p>0为玩家1，1为玩家2，2为玩家3，等。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>function clearOut(玩家)</td>
+                                <td>整型数</td>
+                                <td>当玩家脱离过关范围时调用一次。玩家值是脱离过关范围的玩家编号。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">仅游玩（彩球）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function kusuIn()</td>
+                                <td>-</td>
+                                <td>当彩球序列开始时调用一次。</td>
+                            </tr>
+                            <tr>
+                                <td>function kusuBroke()</td>
+                                <td>-</td>
+                                <td>当彩球成功清除时调用一次。</td>
+                            </tr>
+                            <tr>
+                                <td>function kusuMiss()</td>
+                                <td>-</td>
+                                <td>当彩球在序列结束之前清除失败时调用一次。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">仅游玩（结束）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function update(玩家)</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>每帧都调用。用于计算并更新值。不像原函数，它为每个合格的玩家ID调用以运行此脚本。</p>
+                                    <p>在一帧可运行多次。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>function draw(玩家)</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>每帧都调用。用于控制并更新图像。不像原函数，它为每个合格的玩家ID调用以运行此脚本。</p>
+                                    <p>在一帧可运行多次。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>function playEndAnime(玩家)</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>进程完成时调用一次。玩家值是合格的玩家ID以运行此脚本。</p>
+                                    <p>在一帧可运行多次。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">仅结算</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function skipAnime()</td>
+                                <td>-</td>
+                                <td>当玩家跳过结算界面动画时调用一次。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">仅选曲</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>function playAnime()</td>
+                                <td>-</td>
+                                <td>
+                                    <p>当玩家在难易度选择界面互换魔王的表谱面和里谱面时调用。</p>
+                                    <p>动画用时在皮肤设配置文件指定。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 id="variables">变量</h3>
+                    <p>OpenTaiko提供带可读值的变量以获取此刻发生的细节。</p>
+                    <p>一些细节包括玩家所处状态的信息，尽管其他一些可能提供关于游戏模式状态或特定应用参数的细节。</p>
+                    <p>因为这些变量已经保留，所以您不能创建您自己的与下面列表中同名的变量。</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>变量</th>
+                                <th>种类</th>
+                                <th>说明</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">应用信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>fps</td>
+                                <td>十进制数</td>
+                                <td>
+                                    <p>获取自上一帧描绘后经过的时间数量。</p>
+                                    <p>非整数，值为秒（也就是说，0.0166666……）</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>lang</td>
+                                <td>字符串</td>
+                                <td>
+                                    <p>获取当前选定语言的短字符串格式。</p>
+                                    <p>（也就是说，“en”、“ja”、“fr”，等。）</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">玩家信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>playerCount</td>
+                                <td>整型数</td>
+                                <td>获取当前活跃玩家的数字。</td>
+                            </tr>
+                            <tr>
+                                <td>p1IsBlue</td>
+                                <td>布尔值</td>
+                                <td>
+                                    <p>获取玩家1是否为蓝的布尔值状态。（通过在标题菜单选择右）</p>
+                                    <p>仅1名玩家；如果不是蓝，或者有2名或更多名玩家返回false。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">玩家信息（游玩期间）</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>bpm</td>
+                                <td>十进制数[]</td>
+                                <td>
+                                    <p>获取各玩家的数字列表分辨他们谱面现在所处的BPM。</p>
+                                    <p>对各玩家可以不同。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>gauge</td>
+                                <td>十进制数[]</td>
+                                <td>获取各玩家0~100之间的数字列表分辨他们在魂条的位置。</td>
+                            </tr>
+                            <tr>
+                                <td>isClear</td>
+                                <td>布尔值[]</td>
+                                <td>获取各玩家的布尔值列表分辨各玩家是否过关。</td>
+                            </tr>
+                            <tr>
+                                <td>gogo</td>
+                                <td>布尔值[]</td>
+                                <td>获取各玩家的布尔值列表分辨高潮段是否启用。</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">塔信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>towerNightNum</td>
+                                <td>十进制数</td>
+                                <td>
+                                    <p>获取从0开始的数字并且上升到（但不总是到）1，其变化取决于玩家如何推动塔的进程。</p>
+                                    <p>决定towerNightNum值的源代码是：Math.Min(CurrentMeasure / Math.Max(140, MaxFloorCount / 2), 1);</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th class="sub" colspan="3">AI对战信息</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>battleState</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>获取当前AI对战的情况的相关数字，值介于-9~9之间。默认为0。</p>
+                                    <p>零或更高的数代表玩家正在获胜。负数时代表AI正在获胜。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>battleWin</td>
+                                <td>布尔值</td>
+                                <td>
+                                    <p>获取玩家是否在AI对战正在获胜（或已经获胜）AI的布尔状态。</p>
+                                    <p>还可以在结算界面菜单使用。</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+            <h1 id="faq">常见问题</h1>
+                <p>问：为什么？</p>
+                <p>答：我不知道</p>
+        
+        </content>
+    </body>
+</html>
