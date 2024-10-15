@@ -1,7 +1,23 @@
 <!DOCTYPE html>
     <head>
+        <script>
+            function toggleTheme(use_dark) {
+                localStorage.setItem("darkmode", use_dark)
+                initTheme()
+            }
+            function initTheme() {
+                let css = document.getElementById("style")
+                if (localStorage.getItem("darkmode") === 'true') {
+                    css.href = "../src/style_dark.css"
+                }
+                else {
+                    css.href = "../src/style.css"
+                }
+            }
+        </script>
+
         <title>OpenTaikoドキュメンテーション</title>
-        <link href="../src/style.css" rel="stylesheet">
+        <link href="../src/style.css" rel="stylesheet" id="style" onload="initTheme()">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
@@ -10,7 +26,10 @@
             <h2>Written for Version 0.6.0.0</h2>
         </header>
         <nav>
+            <button onclick="toggleTheme('false')">ライトモード</button>
+            <button onclick="toggleTheme('true')">ダークモード</button>
             <h2>ナビゲーション</h2>
+			
                 <a href="#intro" class="h1">紹介</a>
 
                 <a href="#general" class="h1">通用</a>
@@ -23,11 +42,11 @@
                 <a href="#konga-notes" class="h3">コンガの音符</a>
                 <a href="#miscellaneous-notes" class="h3">その他の音符</a>
 
-                <a href="#skinning" class="h1">Skinning & Customisation</a>
-                <a href="#lua-scripting" class="h2">Lua Scripting</a>
-                <a href="#calling-functions" class="h3">Calling Functions</a>
-                <a href="#receiving-functions" class="h3">Receiving Functions</a>
-                <a href="#variables" class="h3">Variables</a>
+                <a href="#skinning" class="h1">スキンとカスタマイズ</a>
+                <a href="#lua-scripting" class="h2">Luaスクリプト</a>
+                <a href="#calling-functions" class="h3">関数呼び出し</a>
+                <a href="#receiving-functions" class="h3">関数受信</a>
+                <a href="#variables" class="h3">変数</a>
 
                 <a href="#faq" class="h1">よくある質問</a>
         </nav>
@@ -303,134 +322,134 @@
                         </tbody>
                     </table>
 
-            <h1 id="skinning">Skinning & Customisation</h1>
-                <p>In addition to OpenTaiko's default skins, users are able to create their own skins.</p>
+            <h1 id="skinning">スキンとカスタマイズ</h1>
+                <p>OpenTaikoのデフォルトスキンに加えて、ユーザーは自分のスキンを創ることができます。</p>
 
-                <h2 id="lua-scripting">Lua Scripting</h2>
-                <p>OpenTaiko's Lua API allows creators to further customize their skin beyond just replacing textures and sounds, allowing for more dynamic visuals without the need to modify the game's source code. While most menus can have Lua scripts, most scripts are only suited for animating backgrounds at this time. The capabilities of the Lua API are still a work in progress and will expand in the future.</p>
-                <p>Read-only variables are also provided by OpenTaiko, allowing the creator to change the behaviour of their script based on what is happening at that moment.</p>
-                <p>Some examples of what can be done with Lua include:</p>
+                <h2 id="lua-scripting">Luaスクリプト</h2>
+                <p>OpenTaikoのLua APIは、テクスチャやサウンドを置き換えるだけでなく、スキンをさらにカスタマイズでき、ゲームのソースコードを変更することなく、よりダイナミックなビジュアルが可能になります。ほとんどのメニューにはLuaスクリプトを含めることができますが、ほとんどのスクリプトは現時点では背景のアニメーションにのみ適しています。Lua APIの機能はまだ進行中の作業であり、将来的には拡張される予定です。</p>
+                <p>読み取り専用の変数もOpenTaikoによって提供されているため、作成者はその時点で何が起こっているかに基づいてスクリプトの動作を変更できます。</p>
+                <p>Luaでできることのいくつかの例は次のとおりです:</p>
                 <ul>
-                    <li>Being able to read the BPM, gauge percentage, go-go state, and clear status of each active player, and change how visuals are animated using these values.</li>
-                    <li>Checking what language, the user is currently using, allows for localisation support for skins.</li>
-                    <li>Changing the visuals of a background depending on their Tower progress or AI battle state.</li>
+                    <li>各プレイヤーのBPM、ゲージの割合、ゴーゴー状態、クリア状態を読み込めます、そしてこれらの値を使ってビジュアルのアニメーション化方法を変更します。</li>
+                    <li>ユーザーが現在使用している言語を確認すると、スキンのローカリゼーションサポートが可能になります。</li>
+                    <li>タワープログレスとAIバトル状態によって変化している背景。</li>
                 </ul>
 
-                    <h3 id="calling-functions">Calling Functions</h3>
-                    <p>Calling Functions are commands that you send to OpenTaiko to execute a function.</p>
-                    <p>Most of these functions are related to drawing and manipulating textures that your script imports and does not modify the game itself.</p>
+                    <h3 id="calling-functions">関数呼び出し</h3>
+                    <p>呼び出し関数は、OpenTaikoに呼び出されるコマンドです。</p>
+                    <p>あなたのスクリプトでゲーム本体を変更せずこれらの多くの関数は描画や操作に関係します。</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>Function</th>
-                                <th>Input Type(s)</th>
+                                <th>関数</th>
+                                <th>入力種類</th>
                                 <th>説明</th>
                             </tr>
                         </thead>
                         <thead>
                             <tr>
-                                <th class="sub" colspan="3">Console Drawing</th>
+                                <th class="sub" colspan="3">コンソール表示</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:DrawText(x, y, text);</td>
-                                <td>number, number, string</td>
-                                <td>Draws text using the skin's Console Font. (/Graphics/Console_Font.png)</td>
+                                <td>func:DrawText(横の始点, 縦の始点, 文字列);</td>
+                                <td>数字, 数字, 文字列</td>
+                                <td>スキンのコンソールフォントで文字を表示します。(/Graphics/Console_Font.png)</td>
                             </tr>
                             <tr>
-                                <td>func:DrawNum(x, y, num);</td>
-                                <td>number, number, number</td>
-                                <td>Draws a number using the skin's Console Font. (/Graphics/Console_Font.png)</td>
+                                <td>func:DrawNum(横の始点, 縦の始点, 数値);</td>
+                                <td>数字, 数字, 数字</td>
+                                <td>スキンのコンソールフォントで数字を表示します。(/Graphics/Console_Font.png)</td>
                             </tr>
                         </tbody>
                         <thead>
                             <tr>
-                                <th class="sub" colspan="3">Image Drawing</th>
+                                <th class="sub" colspan="3">画像描画</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:AddGraph(filename);</td>
-                                <td>string</td>
-                                <td>Load an image file to be used for your script. This is mandatory for drawing functions to work on your image.</td>
+                                <td>func:AddGraph(ファイルパス);</td>
+                                <td>文字列</td>
+                                <td>スクリプトで使用する画像ファイルを読み込みます。これは画像を表示するために必要です。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraph(x, y, filename);</td>
-                                <td>number, number, string</td>
-                                <td>Draw a given image at a position.</td>
+                                <td>func:DrawGraph(横の始点, 縦の始点, ファイルパス);</td>
+                                <td>数字, 数字, 文字列</td>
+                                <td>指定された位置に指定された画像を描画します。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphCenter(x, y, filename);</td>
-                                <td>number, number, string</td>
-                                <td>Draw a given image at a position, centred at the given coordinates.</td>
+                                <td>func:DrawGraphCenter(横の始点, 縦の始点, ファイルパス);</td>
+                                <td>数字, 数字, 文字列</td>
+                                <td>指定された位置に指定された画像を中心を基準にして描画します。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawRectGraph(x, y, rect_x, rect_y, rect_width, rect_height, filename);</td>
-                                <td>number, number, number, number, number, number, string</td>
+                                <td>func:DrawRectGraph(横の始点, 縦の始点, 長方形横の始点, 長方形縦の始点, 長方形の幅, 長方形の高さ, ファイルパス);</td>
+                                <td>数字, 数字, 数字, 数字, 数字, 数字, 文字列</td>
                                 <td>
-                                    <p>Draw a given image at a position.</p>
-                                    <p>A rectangle is used to specify what portion of the image you want to draw.</p>
-                                    <p>If a rectangle goes outside the bounds of the given image, it will loop back to continue drawing. This method can be used to repeat textures.</p>
+                                    <p>指定された位置に指定された画像を描画します</p>
+                                    <p>長方形は画像の表示する範囲です。</p>
+                                    <p>長方形が画像から超えた場合は、ループして描画されます。この特性を利用して画像を繰り返して描画することができます。</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphRectCenter(x, y, rect_x, rect_y, rect_width, rect_height, filename);</td>
-                                <td>number, number, number, number, number, number, string</td>
+                                <td>func:DrawGraphRectCenter(横の始点, 縦の始点, 長方形横の始点, 長方形縦の始点, 長方形の幅, 長方形の高さ, ファイルパス);</td>
+                                <td>数字, 数字, 数字, 数字, 数字, 数字, 文字列</td>
                                 <td>
-                                    <p>Draw a given image at a position, centered at the given coordinates.</p>
-                                    <p>A rectangle is used to specify what portion of the image you want to draw.</p>
-                                    <p>If a rectangle goes outside the bounds of the given image, it will loop back to continue drawing. This method can be used to repeat textures.</p>
+                                    <p>指定された位置に指定された画像を中心を基準にして描画します</p>
+                                    <p>長方形は画像の表示する範囲です。</p>
+                                    <p>長方形が画像から超えた場合は、ループして描画されます。この特性を利用して画像を繰り返して描画することができます。</p>
                                 </td>
                             </tr>
                         </tbody>
                         <thead>
                             <tr>
-                                <th class="sub" colspan="3">Image Manipulation</th>
+                                <th class="sub" colspan="3">画像処理</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:SetScale(x_scale, y_scale, filename)</td>
-                                <td>number, number, string</td>
-                                <td>Set the scale of your image. 1.0 is the default value.</td>
+                                <td>func:SetScale(Ｘスケール, Ｙスケール, ファイルパス)</td>
+                                <td>数字, 数字, 文字列</td>
+                                <td>画像の拡大率を指定します。1.0がデフォルトです。</td>
                             </tr>
                             <tr>
-                                <td>func:SetRotation(rotation, filename)</td>
-                                <td>number, string</td>
-                                <td>Set the rotation of your image. Value is typically between 0 and 360.</td>
+                                <td>func:SetRotation(回転角度, ファイルパス)</td>
+                                <td>数字, 文字列</td>
+                                <td>画像の回転を指定します。値は典型的に0から360までです。</td>
                             </tr>
                             <tr>
-                                <td>func:SetOpacity(opacity, filename)</td>
-                                <td>number, string</td>
-                                <td>Set the opacity of a given image. Value must be between 0 and 255.</td>
+                                <td>func:SetOpacity(不透明度, ファイルパス)</td>
+                                <td>数字, 文字列</td>
+                                <td>画像の不透明度を指定します。値は0から255までです。</td>
                             </tr>
                             <tr>
-                                <td>func:SetColor(r, g, b, filename)</td>
-                                <td>number, number, number, string</td>
-                                <td>Use a Multiply filter to recolour your image. All values must be between 0.0 and 1.0.</td>
+                                <td>func:SetColor(赤, 緑, 青, ファイルパス)</td>
+                                <td>数字, 数字, 数字, 文字列</td>
+                                <td>乗算フィルターで画像の色味を変更します。すべての値は0.0から1.0までです。</td>
                             </tr>
                             <tr>
-                                <td>func:SetBlendMode(mode, filename)</td>
-                                <td>string, string</td>
+                                <td>func:SetBlendMode(モード, ファイルパス)</td>
+                                <td>文字列, 文字列</td>
                                 <td>
-                                    <p>Specify how an image should blend into the background.</p>
-                                    <p>Blend modes available are: "Normal", "Add", "Multi" (Multiply), "Sub" (Subtract), "Screen"</p>
+                                    <p>画像が背景にどのように表示されるかを指定します。</p>
+                                    <p>利用可能な値は以下の通りです: "Normal"（通常）、"Add"（加算）、"Multi"（乗算）、"Sub"（減算）、"Screen"（スクリーン）。</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3 id="receiving-functions">Receiving Functions</h3>
-                    <p>Receiving Functions are commands that OpenTaiko sends to your script.</p>
-                    <p>Some of these functions are called every frame, while others are only called when necessary. Some can also be called multiple times, mainly per player.</p>
+                    <h3 id="receiving-functions">関数受信</h3>
+                    <p>受信関数はOpenTaikoがスクリプトに送信する関数です。</p>
+                    <p>これらの一部のコマンドにはフレームごとに呼び出されるものと、必要によって一度だけ送信されるものがあります。もう一部は何度も呼び出されることもできます、主にプレイヤー数によって。</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>Function</th>
-                                <th>Input Type(s)</th>
+                                <th>関数</th>
+                                <th>入力種類</th>
                                 <th>説明</th>
                             </tr>
                         </thead>
@@ -443,20 +462,20 @@
                             <tr>
                                 <td>function init()</td>
                                 <td>-</td>
-                                <td>Called once when the script is first loaded. This is used to initialize data, including images.</td>
+                                <td>スクリプトの読み込み後に一回だけ呼び出されます。画像などの読み込みなどの初期化に使用されます</td>
                             </tr>
                             <tr>
                                 <td>function update()</td>
                                 <td>-</td>
                                 <td>
-                                    <p>Called once every frame. Used to calculate and update values. Temporarily stops being called if the game is paused.</p>
-                                    <p>This is always called before draw().</p>
+                                    <p>フレームごとに呼び出されます。値を計算して更新します。ゲームが一時停止されると呼び出されなくなります。</p>
+                                    <p>いつもdraw()の前に呼び出します。.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>function draw()</td>
                                 <td>-</td>
-                                <td>Called once every frame. Used to manipulate and draw images.</td>
+                                <td>フレームごとに呼び出されます。画像の処理と描画に使用されます。</td>
                             </tr>
                         </tbody>
                         <thead>
@@ -466,18 +485,18 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>function clearIn(player)</td>
-                                <td>integer</td>
+                                <td>function clearIn(プレイヤー)</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Called once when a player has reached the clear range. The player value is the player ID that has entered the clear range.</p>
-                                    <p>The player ID starts at 0 and ends at 4.</p>
-                                    <p>0 for 1P, 1 for 2P, 2 for 3P, etc.</p>
+                                    <p>プレイヤーがクリア範囲に入ったときに一回だけ呼び出されます。プレイヤー値はクリアになったプレイヤーIDです。</p>
+                                    <p>プレイヤーIDは0から始まり、4まで終わります。</p>
+                                    <p>0は1P、1は2P、2は3P、といった具合に。。。</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>function clearOut(player)</td>
-                                <td>integer</td>
-                                <td>Called once when a player has dropped from the clear range. The player value is the player ID that has dropped from the clear range.</td>
+                                <td>function clearOut(プレイヤー)</td>
+                                <td>整数</td>
+                                <td>プレイヤーがクリアから落ちた時に一度だけ呼び出されます。プレイヤー値はクリアから落ちたプレイヤーIDです。</td>
                             </tr>
                         </tbody>
                         <thead>
@@ -489,17 +508,17 @@
                             <tr>
                                 <td>function kusuIn()</td>
                                 <td>-</td>
-                                <td>Called once when a Kusudama sequence has started.</td>
+                                <td>くすだまの開始時に一回だけ呼び出されます。</td>
                             </tr>
                             <tr>
                                 <td>function kusuBroke()</td>
                                 <td>-</td>
-                                <td>Called once when a Kusudama was successfully cleared.</td>
+                                <td>くすだまが割れた時に一回だけ呼び出されます。</td>
                             </tr>
                             <tr>
                                 <td>function kusuMiss()</td>
                                 <td>-</td>
-                                <td>Called once when a Kusudama has failed to clear before the sequence has ended.</td>
+                                <td>くすだまが割れすに失敗したときに一回だけ呼び出されます。</td>
                             </tr>
                         </tbody>
                         <thead>
@@ -509,27 +528,27 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>function update(player)</td>
-                                <td>integer</td>
+                                <td>function update(プレイヤー)</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Called every frame. Used to calculate and update values. Unlike the original function, this is called for each player ID qualified to run this script.</p>
-                                    <p>Can run multiple times in a single frame.</p>
+                                    <p>フレームごとに呼び出されます。値を計算して更新します。ほかの同名関数と異なり、プレイヤー値はクリアになったプレイヤーIDです。</p>
+                                    <p>ひとつのフレイムに複数回も実行できます。</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>function draw(player)</td>
-                                <td>integer</td>
+                                <td>function draw(プレイヤー)</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Called every frame. Used to manipulate and draw images. Unlike the original function, this is called for each player ID qualified to run this script.</p>
-                                    <p>Can run multiple times in a single frame.</p>
+                                    <p>フレームごとに呼び出されます。画像を処理して描画します。ほかの同名関数と異なり、プレイヤー値はクリアになったプレイヤーIDです。</p>
+                                    <p>ひとつのフレイムに複数回も実行できます。</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>function playEndAnime(player)</td>
-                                <td>integer</td>
+                                <td>function playEndAnime(プレイヤー)</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Called once when a course is finished. The player value is the player ID qualified to run this script.</p>
-                                    <p>Can run multiple times in a single frame.</p>
+                                    <p>終了アニメーションが再生されるときに一回だけ呼び出されます。プレイヤー値はクリアになったプレイヤーIDです。</p>
+                                    <p>ひとつのフレイムに複数回も実行できます。</p>
                                 </td>
                             </tr>
                         </tbody>
@@ -542,7 +561,7 @@
                             <tr>
                                 <td>function skipAnime()</td>
                                 <td>-</td>
-                                <td>Called once when any player skips the Results Screen animation.</td>
+                                <td>アニメーションがスキップされたときに一回だけ呼び出されます。</td>
                             </tr>
                         </tbody>
                         <thead>
@@ -555,23 +574,23 @@
                                 <td>function playAnime()</td>
                                 <td>-</td>
                                 <td>
-                                    <p>Called when a player on the difficulty select screen swaps between Extreme and Extra difficulty.</p>
-                                    <p>Animation duration is specified in the Skin Config files.</p>
+                                    <p>難易度選択画面で表と裏が切り替えられたときに呼び出されます。</p>
+                                    <p>アニメーションの継続時間は設定ファイルで指定されます。</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3 id="variables">Variables</h3>
-                    <p>OpenTaiko gives variables with read-only values to get details about what's happening at that moment.</p>
-                    <p>Some details include information about what state a player is in, while others may provide detail about the game mode status or certain application parameters.</p>
-                    <p>Because these variables are already reserved, you cannot create your own variables with the same names as the ones listed below.</p>
+                    <h3 id="variables">変数</h3>
+                    <p>OpenTaikoは、その時点で何が起こっているのかについての詳細を取得するために、読み取り専用の値を持つ変数を提供します。</p>
+                    <p>一部の詳細には、プレイヤーの状態に関する情報が含まれていますが、他の詳細には、ゲームモードの状態または特定のアプリケーションパラメーターに関します。</p>
+                    <p>これらの変数は既に予約されているため、以下に示す変数と同じ名前で独自の変数を作成することはできません。</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>Variable Name</th>
-                                <th>Type</th>
+                                <th>変数の名前</th>
+                                <th>種類</th>
                                 <th>説明</th>
                             </tr>
                         </thead>
@@ -583,18 +602,25 @@
                         <tbody>
                             <tr>
                                 <td>fps</td>
-                                <td>decimal</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Gets the amount of time that has passed since the last frame was drawn.</p>
-                                    <p>Non-integral, valued in seconds (i.e. 0.0166666...)</p>
+                                    <p>アプリケーションのフレームレートを取得します。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>deltaTime</td>
+                                <td>10進数</td>
+                                <td>
+                                    <p>前のフレームからの経過時間を取得します。</p>
+                                    <p>非整数、値は秒です。（つまり、0.0166666...）</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>lang</td>
-                                <td>string</td>
+                                <td>文字列</td>
                                 <td>
-                                    <p>Gets the current selected language as a short string format.</p>
-                                    <p>(i.e. "en", "ja", "fr", etc.)</p>
+                                    <p>現在の言語を短い文字列形式として取得します。</p>
+                                    <p>（つまり、"en"、"ja"、"fr"など）</p>
                                 </td>
                             </tr>
                         </tbody>
@@ -606,15 +632,31 @@
                         <tbody>
                             <tr>
                                 <td>playerCount</td>
-                                <td>integer</td>
-                                <td>Gets the current number of active players.</td>
+                                <td>整数</td>
+                                <td>プレイヤーの数を表します。</td>
                             </tr>
                             <tr>
                                 <td>p1IsBlue</td>
-                                <td>boolean</td>
+                                <td>ブール値</td>
                                 <td>
-                                    <p>Gets a Boolean stating if Player 1 is blue. (via selecting Right in the title menu)</p>
-                                    <p>1P only; Returns false if not blue, or if there are 2 or more players.</p>
+                                    <p>1P目が青かどうかを表します。（タイトルメニューで右を選択することで）</p>
+                                    <p>1Pのみ；青ではなければ、または2P以上があれば、falseを返却します。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>characterRarities</td>
+                                <td>文字列[]</td>
+                                <td>
+                                    <p>キャラクターのレア度を取得します。</p>
+                                    <p>可能なレア度："Poor"（駄作）/"Common"（コモン）/"Uncommon"（アンコモン）/"Rare"（レア）/"Epic"（エピック）/"Legendary"（レジェンド）/"Mythical"（究極）</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>puchicharaRarities</td>
+                                <td>文字列[]</td>
+                                <td>
+                                    <p>プチキャラのレア度を取得します。</p>
+                                    <p>可能なレア度："Poor"（駄作）/"Common"（コモン）/"Uncommon"（アンコモン）/"Rare"（レア）/"Epic"（エピック）/"Legendary"（レジェンド）/"Mythical"（究極）</p>
                                 </td>
                             </tr>
                         </tbody>
@@ -626,26 +668,26 @@
                         <tbody>
                             <tr>
                                 <td>bpm</td>
-                                <td>decimal[]</td>
+                                <td>10進数[]</td>
                                 <td>
-                                    <p>Gets a list of numbers for each player that tells what BPM their chart is currently on.</p>
-                                    <p>Can be different for each player.</p>
+                                    <p>各プレイヤーの譜面の現在BPMを示す各プレイヤーの数字のリストを取得します。</p>
+                                    <p>プレイヤーごとに異なる場合があります。</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>gauge</td>
-                                <td>decimal[]</td>
-                                <td>Gets a list of numbers between 0-100 for each player that tells where the player is on the soul gauge.</td>
+                                <td>10進数[]</td>
+                                <td>プレイヤーが魂ゲージ上のどこにいるかを示す各プレイヤーの0～100の間の数字のリストを取得します。</td>
                             </tr>
                             <tr>
                                 <td>isClear</td>
-                                <td>boolean[]</td>
-                                <td>Gets a list of Booleans for each player that tells if each player is clearing their course.</td>
+                                <td>ブール値[]</td>
+                                <td>各プレイヤーのコースが現在クリアかどうかを示す各プレーヤーのブール値のリストを取得します。</td>
                             </tr>
                             <tr>
                                 <td>gogo</td>
-                                <td>boolean[]</td>
-                                <td>Gets a list of Booleans for each player that tells if Go-Go Time is currently active.</td>
+                                <td>ブール値[]</td>
+                                <td>ゴーゴータイムが現在アクティブかどうかを示す各プレーヤーのブール値のリストを取得します。</td>
                             </tr>
                         </tbody>
                         <thead>
@@ -656,10 +698,10 @@
                         <tbody>
                             <tr>
                                 <td>towerNightNum</td>
-                                <td>decimal</td>
+                                <td>10進数</td>
                                 <td>
-                                    <p>Gets a number starting at 0 and going up to (but not always ending at) 1, which changes depending on how far the player has progressed through a Tower.</p>
-                                    <p>The source code determining towerNightNum's value is Math.Min(CurrentMeasure / Math.Max(140, MaxFloorCount / 2), 1);</p>
+                                    <p>0から始まり次の値までの数値を取得します（ただし常にそうとは限りません）終了は1、プレイヤーの上った高さによって変化します。</p>
+                                    <p>towerNightNumの値を決定するソースコードは次の通りです：Math.Min(CurrentMeasure / Math.Max(140, MaxFloorCount / 2), 1);</p>
                                 </td>
                             </tr>
                         </tbody>
@@ -671,18 +713,18 @@
                         <tbody>
                             <tr>
                                 <td>battleState</td>
-                                <td>integer</td>
+                                <td>整数</td>
                                 <td>
-                                    <p>Gets a number related to the current state of the active AI Battle, valued between -9 and 9. Default is 0.</p>
-                                    <p>Zero or higher number means the player is winning. Negative number means the AI is winning.</p>
+                                    <p>AIバトルの状態を数値で表します、値は-9から9までです。デフォルトでは0です。</p>
+                                    <p>0以上の数値はプレイヤーが勝っていることを意味します。それ以下の場合はAIが勝っていることを意味します。</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>battleWin</td>
-                                <td>boolean</td>
+                                <td>ブール値</td>
                                 <td>
-                                    <p>Gets a Boolean stating if the player is winning (or has won) against the AI in AI Battle.</p>
-                                    <p>Can also be used in the Results Screen menu.</p>
+                                    <p>プレイヤーがAIバトルでAIに対して勝っている（または勝った）かどうかを示すブール値を取得します。</p>
+                                    <p>結果発表界面メニューにも使えます。</p>
                                 </td>
                             </tr>
                         </tbody>

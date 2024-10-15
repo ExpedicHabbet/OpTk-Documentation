@@ -1,7 +1,23 @@
 <!DOCTYPE html>
     <head>
+        <script>
+            function toggleTheme(use_dark) {
+                localStorage.setItem("darkmode", use_dark)
+                initTheme()
+            }
+            function initTheme() {
+                let css = document.getElementById("style")
+                if (localStorage.getItem("darkmode") === 'true') {
+                    css.href = "../src/style_dark.css"
+                }
+                else {
+                    css.href = "../src/style.css"
+                }
+            }
+        </script>
+
         <title>OpenTaiko文档说明</title>
-        <link href="../src/style.css" rel="stylesheet">
+        <link href="../src/style.css" rel="stylesheet" id="style" onload="initTheme()">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
@@ -10,7 +26,10 @@
             <h2>为版本0.6.0.0编写</h2>
         </header>
         <nav>
+            <button onclick="toggleTheme('false')">明亮模式</button>
+            <button onclick="toggleTheme('true')">黑暗模式</button>
             <h2>导航</h2>
+			
                 <a href="#intro" class="h1">介绍</a>
 
                 <a href="#general" class="h1">通用</a>
@@ -352,22 +371,22 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:AddGraph(文件名);</td>
+                                <td>func:AddGraph(文件地址);</td>
                                 <td>字符串</td>
                                 <td>加载一张用于您的脚本的图像文件。这是绘制函数作用到您图像的基础。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraph(横坐标, 纵坐标, 文件名);</td>
+                                <td>func:DrawGraph(横坐标, 纵坐标, 文件地址);</td>
                                 <td>数字, 数字, 字符串</td>
                                 <td>在一位置绘制给定图像。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphCenter(横坐标, 纵坐标, 文件名);</td>
+                                <td>func:DrawGraphCenter(横坐标, 纵坐标, 文件地址);</td>
                                 <td>数字, 数字, 字符串</td>
                                 <td>在一给定坐标的中央位置绘制给定图像。</td>
                             </tr>
                             <tr>
-                                <td>func:DrawRectGraph(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件名);</td>
+                                <td>func:DrawRectGraph(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件地址);</td>
                                 <td>数字, 数字, 数字, 数字, 数字, 数字, 字符串</td>
                                 <td>
                                     <p>在一位置绘制给定图像。</p>
@@ -376,7 +395,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphRectCenter(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件名);</td>
+                                <td>func:DrawGraphRectCenter(横坐标, 纵坐标, 矩形横坐标, 矩形纵坐标, 矩形宽, 矩形高, 文件地址);</td>
                                 <td>数字, 数字, 数字, 数字, 数字, 数字, 字符串</td>
                                 <td>
                                     <p>在一给定坐标的中央位置绘制给定图像。</p>
@@ -392,27 +411,27 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:SetScale(横向比, 纵向比, 文件名)</td>
+                                <td>func:SetScale(横向比, 纵向比, 文件地址)</td>
                                 <td>数字, 数字, 字符串</td>
                                 <td>设置您图像的放大倍率。默认值为1.0。</td>
                             </tr>
                             <tr>
-                                <td>func:SetRotation(旋转角度, 文件名)</td>
+                                <td>func:SetRotation(旋转角度, 文件地址)</td>
                                 <td>数字, 字符串</td>
                                 <td>设置您图像的逆时针旋转角度。值通常介于0和360之间。</td>
                             </tr>
                             <tr>
-                                <td>func:SetOpacity(不透明度, 文件名)</td>
+                                <td>func:SetOpacity(不透明度, 文件地址)</td>
                                 <td>数字, 字符串</td>
                                 <td>设置您图像的不透明度。值必须介于0和360之间。</td>
                             </tr>
                             <tr>
-                                <td>func:SetColor(红, 绿, 蓝, 文件名)</td>
+                                <td>func:SetColor(红, 绿, 蓝, 文件地址)</td>
                                 <td>数字, 数字, 数字, 字符串</td>
                                 <td>使用乘法过滤重上色您的图像。所有值必须介于0.0和1.0之间。</td>
                             </tr>
                             <tr>
-                                <td>func:SetBlendMode(模式, 文件名)</td>
+                                <td>func:SetBlendMode(模式, 文件地址)</td>
                                 <td>字符串, 字符串</td>
                                 <td>
                                     <p>指定图像混合到背景中的方式。</p>
@@ -583,6 +602,13 @@
                         <tbody>
                             <tr>
                                 <td>fps</td>
+                                <td>整型数</td>
+                                <td>
+                                    <p>获取应用程序的帧速率。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>deltaTime</td>
                                 <td>十进制数</td>
                                 <td>
                                     <p>获取自上一帧描绘后经过的时间数量。</p>
@@ -615,6 +641,22 @@
                                 <td>
                                     <p>获取玩家1是否为蓝的布尔值状态。（通过在标题菜单选择右）</p>
                                     <p>仅1名玩家；如果不是蓝，或者有2名或更多名玩家返回false。</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>characterRarities</td>
+                                <td>字符串[]</td>
+                                <td>
+                                    <p>获取角色的稀有度。</p>
+                                    <p>可能的稀有度："Poor"（低下）/"Common"（普通）/"Uncommon"（罕见）/"Rare"（稀有）/"Epic"（史诗）/"Legendary"（传说）/"Mythical"（神话）</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>puchicharaRarities</td>
+                                <td>字符串[]</td>
+                                <td>
+                                    <p>获取迷你角色的稀有度。</p>
+                                    <p>可能的稀有度："Poor"（低下）/"Common"（普通）/"Uncommon"（罕见）/"Rare"（稀有）/"Epic"（史诗）/"Legendary"（传说）/"Mythical"（神话）</p>
                                 </td>
                             </tr>
                         </tbody>
