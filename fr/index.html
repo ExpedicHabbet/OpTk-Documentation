@@ -6,23 +6,24 @@
                 initTheme()
             }
             function initTheme() {
-                let css = document.getElementById("style")
+                let css = document.getElementById("dark_mode")
                 if (localStorage.getItem("darkmode") === 'true') {
                     css.href = "../src/style_dark.css"
                 }
                 else {
-                    css.href = "../src/style.css"
+                    css.href = ""
                 }
             }
         </script>
 
         <title>Documentation OpenTaiko</title>
-        <link href="../src/style.css" rel="stylesheet" id="style" onload="initTheme()">
+        <link href="../src/style.css" rel="stylesheet">
+        <link href="../src/style_dark.css" rel="stylesheet" id="dark_mode" onload="initTheme()">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
         <header>
-            <h1>Documentation OpenTaiko</h1>
+            <h1>Documentation <open>Open</open><taiko>Taiko</taiko></h1>
             <h2>Écriée pour Version 0.6.0.0</h2>
         </header>
         <nav>
@@ -53,19 +54,19 @@
         <content>
 
             <h1 id="intro">Introduction</h1>
-                <p>Courez OpenTaiko.exe. C’est l’introduction.</p>
+                <p>Bienvenue sur la page de documentation OpenTaiko ! Tout ce que vous voyez ici est un travail en cours, car on documente toujours l’énorme quantité d’informations liées à ce jeu.</p>
 
             <h1 id="general">Général</h1>
-                <p>Allez à la Partie Rapide.</p>
+                <p>-</p>
 
             <h1 id="gameplay">Gameplay</h1>
-                <p>Frappez au tambour.</p>
+                <p>-</p>
 
             <h1 id="charting">Faire de la partition</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos magnam quia veniam adipisci aliquid aliquam accusantium veritatis, iusto facilis harum maxime at unde officia atque temporibus, optio, quasi quidem aspernatur.</p>
+                <p>OpenTaiko utilise le format TJA pour faire de la partition. Elle peuvent être ouverte avec n’importe quel éditeur de texte ou avec un éditeur visuel tel que PeepoDrumKit. Vous trouverez ci-dessous une liste des genres de notes utilisés.</p>
 
                 <h2 id="note-types">Genres de les notes</h2>
-                <p>Il y a beaucoup de notes soutenues par OpenTaiko. Certaines sont couramment utilisées dans toutes les partitions, alors que d’autres ne peuvent qu’être exclusives aux autres modes, ou vu dans des cas rares.</p>
+                <p>Il y a beaucoup de notes soutenues par OpenTaiko. Certaines sont couramment utilisées dans toutes les partitions, alors que d’autres apparaît moins souvent. Des peut également être exclusif à d’autres modes ou avoir des comportements différents.</p>
 
                     <h3 id="taiko-notes">Notes en Taiko</h3>
                     <p>Les genres de notes courant utilisés en Taiko sont listés ici.</p>
@@ -274,7 +275,7 @@
                     </table>
 
                     <h3 id="miscellaneous-notes">Notes diverses</h3>
-                    <p>Les notes diverses utilisés en tous les types sont listées ici.</p>
+                    <p>Les notes diverses utilisés en tous les genres sont listées ici.</p>
                     <p>Ces genres de notes ne sont pas régulièrement utilisés dans les partitions normalles. Vous ne les trouverez généralement que dans les partitions gimmick.</p>
 
                     <table>
@@ -692,6 +693,21 @@
                         </tbody>
                         <thead>
                             <tr>
+                                <th class="sub" colspan="3">Gameplay Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>timeStamp</td>
+                                <td>decimal</td>
+                                <td>
+                                    <p>Gets the amount of time in seconds that have passed since the chart has begun, beginning at the first measure.</p>
+                                    <p>Can be negative if the chart hasn't started yet.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
                                 <th class="sub" colspan="3">Tower Information</th>
                             </tr>
                         </thead>
@@ -733,7 +749,7 @@
             <h1 id="faq">Questions fréquemment posées</h1>
                 <p>Q : Pourquoi ?</p>
                 <p>R : Je ne sais pas.</p>
-        
+
         </content>
     </body>
 </html>

@@ -6,23 +6,24 @@
                 initTheme()
             }
             function initTheme() {
-                let css = document.getElementById("style")
+                let css = document.getElementById("dark_mode")
                 if (localStorage.getItem("darkmode") === 'true') {
                     css.href = "../src/style_dark.css"
                 }
                 else {
-                    css.href = "../src/style.css"
+                    css.href = ""
                 }
             }
         </script>
 
         <title>OpenTaiko Документация</title>
-        <link href="../src/style.css" rel="stylesheet" id="style" onload="initTheme()">
+        <link href="../src/style.css" rel="stylesheet">
+        <link href="../src/style_dark.css" rel="stylesheet" id="dark_mode" onload="initTheme()">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
         <header>
-            <h1>OpenTaiko Документация</h1>
+            <h1><open>Open</open><taiko>Taiko</taiko> Документация</h1>
             <h2>Написано для версии 0.6.0.0</h2>
         </header>
         <nav>
@@ -53,19 +54,19 @@
         <content>
 
             <h1 id="intro">Введение</h1>
-                <p>Запустите OpenTaiko.exe. Это и есть введение.</p>
+                <p>Добро пожаловать на страницу документации OpenTaiko! Все, что вы видите здесь, находится в стадии разработки, поскольку мы все ещё документируем огромное количество информации, связанной с этой игрой.</p>
 
             <h1 id="general">Главный</h1>
-                <p>Перейдите в Режим Тайко.</p>
+                <p>-</p>
 
             <h1 id="gameplay">Геймплей</h1>
-                <p>Ударите в барабан.</p>
+                <p>-</p>
 
             <h1 id="charting">Создание партитуры</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos magnam quia veniam adipisci aliquid aliquam accusantium veritatis, iusto facilis harum maxime at unde officia atque temporibus, optio, quasi quidem aspernatur.</p>
+                <p>OpenTaiko использовает формат TJA для создания партитуры. Их можно открыть в любом текстовом редакторе или в визуальном редакторе, таком как PeepoDrumKit. Ниже приведен список используемых типов нот.</p>
 
                 <h2 id="note-types">Типы ноты</h2>
-                <p>OpenTaiko поддерживает множество нот. Некоторые из них обычно используются в каждой партитуре, в то время как другие могут использоваться исключительно в других режимах или встречаться только в редких случаях.</p>
+                <p>OpenTaiko поддерживает множество нот. Некоторые из них обычно используются в каждой партитуре, в то время как другие появляются реже. Некоторые из них также могут быть доступны только для других режимов или иметь другое поведение.</p>
 
                     <h3 id="taiko-notes">Ноты Тайко</h3>
                     <p>Здесь перечислены распространенные типы нот, используемые в режиме Тайко.</p>
@@ -692,6 +693,21 @@
                         </tbody>
                         <thead>
                             <tr>
+                                <th class="sub" colspan="3">Gameplay Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>timeStamp</td>
+                                <td>decimal</td>
+                                <td>
+                                    <p>Gets the amount of time in seconds that have passed since the chart has begun, beginning at the first measure.</p>
+                                    <p>Can be negative if the chart hasn't started yet.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
                                 <th class="sub" colspan="3">Tower Information</th>
                             </tr>
                         </thead>
@@ -733,7 +749,7 @@
             <h1 id="faq">Часто задаваемые вопросы</h1>
                 <p>В: Почему?</p>
                 <p>О: Я не знаю.</p>
-        
+
         </content>
     </body>
 </html>
