@@ -16,39 +16,39 @@
             }
         </script>
 
-        <title>OpenTaiko Документация</title>
+        <title>Documentación de OpenTaiko</title>
         <link href="../src/style.css" rel="stylesheet">
         <link href="../src/style_dark.css" rel="stylesheet" id="dark_mode" onload="initTheme()">
         <link rel="icon" type="image/x-icon" href="../favicon.ico">
     </head>
     <body>
         <header>
-            <h1><open>Open</open><taiko>Taiko</taiko> Документация</h1>
-            <h2>Написано для версии 0.6.0.0</h2>
+            <h1>Documentación de <open>Open</open><taiko>Taiko</taiko></h1>
+            <h2>Escrita para la versión 0.6.0.0</h2>
             <a href="../index.html">English (United States)</a> 
             | <a href="../en-uk/index.html">English (United Kingdom)</a>
-            | <a href="../es/index.html">español</a>
+            | <b>español</b>
             | <a href="../fr/index.html">français</a>
             | <a href="../ja/index.html">日本語</a>
-            | <b>русский</b>
+            | <a href="../ru/index.html">русский</a>
             | <a href="../zh/index.html">中文(中国内地)</a>
         </header>
         <nav>
-            <button onclick="toggleTheme('false')">Светлый режим</button>
-            <button onclick="toggleTheme('true')">Тёмный режим</button>
-            <h2>Навигация</h2>
+            <button onclick="toggleTheme('false')">Modo Claro</button>
+            <button onclick="toggleTheme('true')">Modo Oscuro</button>
+            <h2>Navegación</h2>
 			
-                <a href="#intro" class="h1">Введение</a>
+                <a href="#intro" class="h1">Introducción</a>
 
-                <a href="#general" class="h1">Главный</a>
+                <a href="#general" class="h1">General</a>
 
-                <a href="#gameplay" class="h1">Геймплей</a>
+                <a href="#gameplay" class="h1">Juego</a>
 
-                <a href="#charting" class="h1">Создание партитуры</a>
-                <a href="#note-types" class="h2">Типы ноты</a>
-                <a href="#taiko-notes" class="h3">Ноты Тайко</a>
-                <a href="#konga-notes" class="h3">Ноты Конга</a>
-                <a href="#miscellaneous-notes" class="h3">Разнообразные ноты</a>
+                <a href="#charting" class="h1">Partituras</a>
+                <a href="#note-types" class="h2">Tipos de Notas</a>
+                <a href="#taiko-notes" class="h3">Notas de Taiko</a>
+                <a href="#konga-notes" class="h3">Notas de Konga</a>
+                <a href="#miscellaneous-notes" class="h3">Notas Misceláneas</a>
 
                 <a href="#skinning" class="h1">Skinning & Customisation</a>
                 <a href="#lua-scripting" class="h2">Lua Scripting</a>
@@ -56,275 +56,275 @@
                 <a href="#receiving-functions" class="h3">Receiving Functions</a>
                 <a href="#variables" class="h3">Variables</a>
 
-                <a href="#faq" class="h1">Часто задаваемые вопросы</a>
+                <a href="#faq" class="h1">Preguntas Frecuentes</a>
         </nav>
         <content>
 
-            <h1 id="intro">Введение</h1>
-                <p>Добро пожаловать на страницу документации OpenTaiko! Все, что вы видите здесь, находится в стадии разработки, поскольку мы все ещё документируем огромное количество информации, связанной с этой игрой.</p>
+            <h1 id="intro">Introducción</h1>
+                <p>¡Bienvenido/a a la página de la documentación de OpenTaiko! Todo lo que ves aquí es un trabajo en progreso, ya que todavía estamos documentando la gran cantidad de información relacionada con este juego.</p>
 
-            <h1 id="general">Главный</h1>
+            <h1 id="general">General</h1>
                 <p>-</p>
 
-            <h1 id="gameplay">Геймплей</h1>
+            <h1 id="gameplay">Juego</h1>
                 <p>-</p>
 
-            <h1 id="charting">Создание партитуры</h1>
-                <p>OpenTaiko использовает формат TJA для создания партитуры. Их можно открыть в любом текстовом редакторе или в визуальном редакторе, таком как PeepoDrumKit. Ниже приведен список используемых типов нот.</p>
+            <h1 id="charting">Partituras</h1>
+                <p>OpenTaiko usa el formato TJA para componer canciones. Se pueden abrir con cualquier editor de texto, o con un editor visual como PeepoDrumKit. A continuación se muestra una lista de los tipos de notas utilizados.</p>
 
-                <h2 id="note-types">Типы ноты</h2>
-                <p>OpenTaiko поддерживает множество нот. Некоторые из них обычно используются в каждой партитуре, в то время как другие появляются реже. Некоторые из них также могут быть доступны только для других режимов или иметь другое поведение.</p>
+                <h2 id="note-types">Tipos de Notas</h2>
+                <p>Hay muchas notas compatibles con OpenTaiko. Algunos se usan comúnmente en todos las partituras, mientras que otros aparecen con menos frecuencia. Algunos también pueden ser exclusivos de otros modos o tener comportamientos diferentes.</p>
 
-                    <h3 id="taiko-notes">Ноты Тайко</h3>
-                    <p>Здесь перечислены распространенные типы нот, используемые в режиме Тайко.</p>
+                    <h3 id="taiko-notes">Notas de Taiko</h3>
+                    <p>Aquí se enumeran los tipos de notas comunes que se usan en el modo Taiko.</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>№</th>
-                                <th>Имя</th>
-                                <th>Описание</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>0</td>
-                                <td>Пустое место</td>
+                                <td>Vacío</td>
                                 <td>
-                                    <p>Пустое пространство</p>
-                                    <p>Незаменим при разделении нот, а также помогает создавать сложные узоры.</p>
+                                    <p>Espacio vacío</p>
+                                    <p>Esencial para espaciar notas, así como para ayudar a crear patrones complejos.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>1</td>
-                                <td>Дон</td>
-                                <td>Красная нота</td>
+                                <td>Don</td>
+                                <td>Nota roja</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Ка</td>
-                                <td>Синяя нота</td>
+                                <td>Ka</td>
+                                <td>Nota azul</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Дон (Большая)</td>
-                                <td>Большая красная нота</td>
+                                <td>Don grande</td>
+                                <td>Nota roja grande</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Ка (Большая)</td>
-                                <td>Большая синяя нота</td>
+                                <td>Ka grande</td>
+                                <td>Nota azul grande</td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Началь дроби</td>
+                                <td>Inicio de redoble de tambor</td>
                                 <td>
-                                    <p>Барабанная дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
+                                    <p>Redoble de tambor</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>6</td>
-                                <td>Началь дроби (Большая)</td>
+                                <td>Inicio de redoble de tambor grande</td>
                                 <td>
-                                    <p>Барабанная дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
+                                    <p>Redoble de tambor grande</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td>Началь баллона</td>
+                                <td>Inicio de globo</td>
                                 <td>
-                                    <p>Баллон</p>
-                                    <p>Отмечает началь баллона. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Аналогично барабанной дроби, но для этого необходимо ударить определенное количество ударов в течение определенного времени. Значение баллона указано в теге «BALLOON».</p>
+                                    <p>Globo</p>
+                                    <p>Marca el comienzo de un globo. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Similar al redoble de tambor, pero debe golper una cierta cantidad dentro de un límite de tiempo para completar. El valor del globo lo especifica la etiqueta del BALLOON.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>8</td>
-                                <td>Конец длинной ноты</td>
-                                <td>Отмечает конец любой длинной ноты.</td>
+                                <td>Fin de la nota larga</td>
+                                <td>Marca el final de cualquier nota larga.</td>
                             </tr>
                             <tr>
                                 <td>9</td>
-                                <td>Началь кускдамы</td>
+                                <td>Inicio de Kusudama</td>
                                 <td>
-                                    <p>Большой баллон</p>
-                                    <p>Отмечает началь кускдамы. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Аналогично барабанной дроби, но для этого необходимо ударить определенное количество ударов в течение определенного времени. Значение кускдамы указано в теге «BALLOON».</p>
+                                    <p>Globo grande</p>
+                                    <p>Marca el comienzo de un kusudama. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Similar al redoble de tambor, pero debe golper una cierta cantidad dentro de un límite de tiempo para completar. El valor del kusudama lo especifica la etiqueta del BALLOON.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>A</td>
-                                <td>Дон (Большая - Обо)</td>
+                                <td>Don (Largo - Ambos)</td>
                                 <td>
-                                    <p>Большая красная нота</p>
-                                    <p>При воспроизведении партитуры в многопользовательской игре отображаются соединенные руки, а нота отображается выровненным по ширине.</p>
+                                    <p>Nota roja grande</p>
+                                    <p>Muestra las manos conectadas cuando se reproduce una partitura en el modo multijugador y la nota aparece alineada entre sí.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>B</td>
-                                <td>Ка (Большая - Обо)</td>
+                                <td>Ka (Largo - Ambos)</td>
                                 <td>
-                                    <p>Большая синяя нота</p>
-                                    <p>При воспроизведении партитуры в многопользовательской игре отображаются соединенные руки, а нота отображается выровненным по ширине.</p>
+                                    <p>Nota azul grande</p>
+                                    <p>Muestra las manos conectadas cuando se reproduce una partitura en el modo multijugador y la nota aparece alineada entre sí.</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3 id="konga-notes">Ноты Конга</h3>
-                    <p>Здесь перечислены распространенные типы нот, используемые в режиме Конга.</p>
-                    <p>Многие из них уже используются в режиме Тайко, но некоторые используются исключительно в этом игровом режиме.</p>
+                    <h3 id="konga-notes">Notas de Konga</h3>
+                    <p>Aquí se enumeran los tipos de notas comunes que se usan en el modo Konga.</p>
+                    <p>Muchas de ellas ya se usan en el modo Taiko, pero algunas se usan exclusivamente en este modo de juego.</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>№</th>
-                                <th>Имя</th>
-                                <th>Описание</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>0</td>
-                                <td>Пустое место</td>
+                                <td>Vacío</td>
                                 <td>
-                                    <p>Пустое пространство</p>
-                                    <p>Незаменим при разделении нот, а также помогает создавать сложные узоры.</p>
+                                    <p>Espacio vacío</p>
+                                    <p>Esencial para espaciar notas, así como para ayudar a crear patrones complejos.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>1</td>
-                                <td>Правая нота</td>
-                                <td>Правая нота</td>
+                                <td>Derecha</td>
+                                <td>Nota derecha</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Левая нота</td>
-                                <td>Левая нота</td>
+                                <td>Izquierda</td>
+                                <td>Nota izquierda</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Двойная нота</td>
-                                <td>Двойная нота</td>
+                                <td>Doble</td>
+                                <td>Nota doble</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Хлопание</td>
-                                <td>Хлопающая нота</td>
+                                <td>Aplauso</td>
+                                <td>Nota de aplauso</td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Началь правой дроби</td>
+                                <td>Inicio de redoble de tambor derecho</td>
                                 <td>
-                                    <p>Правая дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
+                                    <p>Redoble de tambor derecho</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>6</td>
-                                <td>Началь двойной дроби</td>
+                                <td>Inicio de redoble de tambor doble</td>
                                 <td>
-                                    <p>Двойная дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
+                                    <p>Redoble de tambor doble</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td>Началь баллона</td>
+                                <td>Inicio de globo</td>
                                 <td>
-                                    <p>Баллон</p>
-                                    <p>Отмечает началь баллона. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Аналогично барабанной дроби, но для этого необходимо ударить определенное количество ударов в течение определенного времени. Значение баллона указано в теге «BALLOON».</p>
+                                    <p>Globo</p>
+                                    <p>Marca el comienzo de un globo. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Similar al redoble de tambor, pero debe golper una cierta cantidad dentro de un límite de tiempo para completar. El valor del globo lo especifica la etiqueta del BALLOON.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>8</td>
-                                <td>Конец длинной ноты</td>
-                                <td>Отмечает конец любой длинной ноты.</td>
+                                <td>Fin de la nota larga</td>
+                                <td>Marca el final de cualquier nota larga.</td>
                             </tr>
                             <tr>
                                 <td>9</td>
-                                <td>Началь кускдамы</td>
+                                <td>Inicio de Kusudama</td>
                                 <td>
-                                    <p>Большой баллон</p>
-                                    <p>Отмечает началь кусудамы. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Аналогично барабанной дроби, но для этого необходимо ударить определенное количество ударов в течение определенного времени. Значение кускдамы указано в теге «BALLOON».</p>
+                                    <p>Globo grande</p>
+                                    <p>Marks the beginning of a kusudama. Use 0 to increase the length of the drumroll, and 8 to end the drumroll.</p>
+                                    <p>Similar al redoble de tambor, pero debe golper una cierta cantidad dentro de un límite de tiempo para completar. El valor del kusudama lo especifica la etiqueta del BALLOON.</p>
                                 </td>
                             </tr>
                         </tbody>
                         <thead>
                             <tr>
-                                <th class="sub" colspan="3">Конга Только Ноты</th>
+                                <th class="sub" colspan="3">Konga Solo Notas</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>I</td>
-                                <td>Началь левой дроби</td>
+                                <td>Inicio de redoble de tambor izquierdo</td>
                                 <td>
-                                    <p>Левая дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Превращается в маленькую барабанную дробь в режиме Тайко.</p>
+                                    <p>Redoble de tambor izquierdo</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Se vuelve un pequeño redoble de tambor en el modo Taiko.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>H</td>
-                                <td>Началь хлопающей дроби</td>
+                                <td>Inicio de redoble de tambor de aplauso</td>
                                 <td>
-                                    <p>Хлопающая дробь</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Превращается в большую барабанную дробь в режиме Тайко.</p>
+                                    <p>Redoble de tambor de aplauso</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Se vuelve un grande redoble de tambor en el modo Taiko.</p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <h3 id="miscellaneous-notes">Разнообразные ноты</h3>
-                    <p>Здесь перечислены разнообразные ноты, используемые во всем режиме.</p>
-                    <p>В нормальные партитуры нечасто использовают эти типы ноты. Обычно вы найдете их только в партитурах трюков.</p>
+                    <h3 id="miscellaneous-notes">Notas Misceláneas</h3>
+                    <p>Aquí se enumeran notas misceláneas utilizadas en todos los modos.</p>
+                    <p>Estos tipos de notas no se usan regularmente en partituras normales. Por lo general, solo los encontrarás en partituras de trucos.</p>
 
                     <table>
                         <thead>
                             <tr>
-                                <th>№</th>
-                                <th>Имя</th>
-                                <th>Описание</th>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>C</td>
-                                <td>Бомба</td>
+                                <td>Bomba</td>
                                 <td>
-                                    <p>Нота бомба</p>
-                                    <p>Нота, от удара по которой игроки должны активно уклоняться. При ударнии прерывает комбо и резко снижает датчик.</p>
+                                    <p>Nota de bomba</p>
+                                    <p>Una nota de que los jugadores deben evitar golpear activamente. Rompe el combo y deja caer drásticamente el indicador si es golpeado.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>F</td>
                                 <td>Adlib</td>
                                 <td>
-                                    <p>Невидимая нота</p>
-                                    <p>Невидимая по умолчанию, а не обязательно, чтобы её ударили. При ударнии звучит специальный ударный звук.</p>
+                                    <p>Invisible note</p>
+                                    <p>Aparece invisible de forma predeterminada y no es necesario golpearlo. Si se golpea, se reproduce un sonido de golpe especial.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>G</td>
-                                <td>Кадон</td>
+                                <td>Kadon</td>
                                 <td>
-                                    <p>Фиолетовая нота</p>
-                                    <p>Требуется, чтобы игрок ударил одновременно «дон» и «ка». В режиме Конга это превращается как двойная нота.</p>
+                                    <p>Nota morada</p>
+                                    <p>Requiere que el jugador golpee tanto a don como a ka. En el modo Konga, esto aparece como una nota Doble.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>D</td>
-                                <td>Началь дроби взрывателя</td>
+                                <td>Start of Fuse Roll</td>
                                 <td>
-                                    <p>Баллон бомба</p>
-                                    <p>Отмечает началь дроби. Используйте 0, чтобы увеличить длину барабанной дроби, а 8, чтобы завершить её.</p>
-                                    <p>Ведет себя аналогично баллон, но её нужна вовремя разорвать. Если у пользователя не получится, она будет вести себя как бомба, нарушая комбо и повреждая его текущий датчик.</p>
+                                    <p>Globo de bomba</p>
+                                    <p>Marca el comienzo de un redoble de tambor. Use 0 para aumentar la longitud del redoble de tambor y 8 para finalizar el redoble de tambor.</p>
+                                    <p>Se comporta de manera similar al Globo, pero debe romperse a tiempo. Si el usuario falla, se comportará como una nota de Bomba, rompiendo combo y dañando su indicador actual.</p>
                                 </td>
                             </tr>
                         </tbody>
@@ -350,9 +350,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Функция</th>
-                                <th>Тип(ы) ввода</th>
-                                <th>Описание</th>
+                                <th>Function</th>
+                                <th>Input Type(s)</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <thead>
@@ -362,13 +362,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:DrawText(x, y, текст);</td>
-                                <td>число, число, строка</td>
+                                <td>func:DrawText(x, y, text);</td>
+                                <td>number, number, string</td>
                                 <td>Draws text using the skin's Console Font. (/Graphics/Console_Font.png)</td>
                             </tr>
                             <tr>
-                                <td>func:DrawNum(x, y, число);</td>
-                                <td>число, число, число</td>
+                                <td>func:DrawNum(x, y, num);</td>
+                                <td>number, number, number</td>
                                 <td>Draws a number using the skin's Console Font. (/Graphics/Console_Font.png)</td>
                             </tr>
                         </tbody>
@@ -379,23 +379,23 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:AddGraph(путь_к_файлу);</td>
-                                <td>строка</td>
+                                <td>func:AddGraph(filepath);</td>
+                                <td>string</td>
                                 <td>Load an image file to be used for your script. This is mandatory for drawing functions to work on your image.</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraph(x, y, путь_к_файлу);</td>
-                                <td>число, число, строка</td>
+                                <td>func:DrawGraph(x, y, filepath);</td>
+                                <td>number, number, string</td>
                                 <td>Draw a given image at a position.</td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphCenter(x, y, путь_к_файлу);</td>
-                                <td>число, число, строка</td>
+                                <td>func:DrawGraphCenter(x, y, filepath);</td>
+                                <td>number, number, string</td>
                                 <td>Draw a given image at a position, centred at the given coordinates.</td>
                             </tr>
                             <tr>
-                                <td>func:DrawRectGraph(x, y, прямоугольник_x, прямоугольник_y, прямоугольник_ширина, прямоугольник_высота, путь_к_файлу);</td>
-                                <td>число, число, число, число, число, число, строка</td>
+                                <td>func:DrawRectGraph(x, y, rect_x, rect_y, rect_width, rect_height, filepath);</td>
+                                <td>number, number, number, number, number, number, string</td>
                                 <td>
                                     <p>Draw a given image at a position.</p>
                                     <p>A rectangle is used to specify what portion of the image you want to draw.</p>
@@ -403,8 +403,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>func:DrawGraphRectCenter(x, y, прямоугольник_x, прямоугольник_y, прямоугольник_ширина, прямоугольник_высота, путь_к_файлу);</td>
-                                <td>число, число, число, число, число, число, строка</td>
+                                <td>func:DrawGraphRectCenter(x, y, rect_x, rect_y, rect_width, rect_height, filepath);</td>
+                                <td>number, number, number, number, number, number, string</td>
                                 <td>
                                     <p>Draw a given image at a position, centred at the given coordinates.</p>
                                     <p>A rectangle is used to specify what portion of the image you want to draw.</p>
@@ -419,50 +419,33 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>func:SetScale(x_scale, y_scale, путь_к_файлу)</td>
-                                <td>число, число, строка</td>
+                                <td>func:SetScale(x_scale, y_scale, filepath)</td>
+                                <td>number, number, string</td>
                                 <td>Set the scale of your image. 1.0 is the default value.</td>
                             </tr>
                             <tr>
-                                <td>func:SetRotation(поворот, путь_к_файлу)</td>
-                                <td>число, строка</td>
+                                <td>func:SetRotation(rotation, filepath)</td>
+                                <td>number, string</td>
                                 <td>Set the rotation of your image. Value is typically between 0 and 360.</td>
                             </tr>
                             <tr>
-                                <td>func:SetOpacity(непрозрачность, путь_к_файлу)</td>
-                                <td>число, строка</td>
+                                <td>func:SetOpacity(opacity, filepath)</td>
+                                <td>number, string</td>
                                 <td>Set the opacity of a given image. Value must be between 0 and 255.</td>
                             </tr>
                             <tr>
-                                <td>func:SetColor(r, g, b, путь_к_файлу)</td>
-                                <td>число, число, число, строка</td>
+                                <td>func:SetColor(r, g, b, filepath)</td>
+                                <td>number, number, number, string</td>
                                 <td>Use a Multiply filter to recolour your image. All values must be between 0.0 and 1.0.</td>
                             </tr>
                             <tr>
-                                <td>func:SetBlendMode(режим, путь_к_файлу)</td>
-                                <td>строка, строка</td>
+                                <td>func:SetBlendMode(mode, filepath)</td>
+                                <td>string, string</td>
                                 <td>
                                     <p>Specify how an image should blend into the background.</p>
                                     <p>Blend modes available are: "Normal", "Add", "Multi" (Multiply), "Sub" (Subtract), "Screen"</p>
                                 </td>
                             </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th class="sub" colspan="3">Image Information</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>func:GetTextureWidth(путь_к_файлу)</td>
-                                <td>строка</td>
-                                <td>Get the width of the loaded texture. Returns -1 if the texture is null.</td>
-                            </tr>
-                            <tr>
-                                <td>func:GetTextureHeight(путь_к_файлу)</td>
-                                <td>строка</td>
-                                <td>Get the height of the loaded texture. Returns -1 if the texture is null.</td>
-                            </tr>                            
                         </tbody>
                     </table>
 
@@ -473,9 +456,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Функция</th>
-                                <th>Тип(ы) ввода</th>
-                                <th>Описание</th>
+                                <th>Function</th>
+                                <th>Input Type(s)</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <thead>
@@ -510,8 +493,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>function clearIn(игрок)</td>
-                                <td>целое</td>
+                                <td>function clearIn(player)</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Called once when a player has reached the clear range. The player value is the player ID that has entered the clear range.</p>
                                     <p>The player ID starts at 0 and ends at 4.</p>
@@ -519,8 +502,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>function clearOut(игрок)</td>
-                                <td>целое</td>
+                                <td>function clearOut(player)</td>
+                                <td>integer</td>
                                 <td>Called once when a player has dropped from the clear range. The player value is the player ID that has dropped from the clear range.</td>
                             </tr>
                         </tbody>
@@ -553,24 +536,24 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>function update(игрок)</td>
-                                <td>целое</td>
+                                <td>function update(player)</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Called every frame. Used to calculate and update values. Unlike the original function, this is called for each player ID qualified to run this script.</p>
                                     <p>Can run multiple times in a single frame.</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>function draw(игрок)</td>
-                                <td>целое</td>
+                                <td>function draw(player)</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Called every frame. Used to manipulate and draw images. Unlike the original function, this is called for each player ID qualified to run this script.</p>
                                     <p>Can run multiple times in a single frame.</p>
                                 </td>
                             </tr>
                             <tr>
-                                <td>function playEndAnime(игрок)</td>
-                                <td>целое</td>
+                                <td>function playEndAnime(player)</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Called once when a course is finished. The player value is the player ID qualified to run this script.</p>
                                     <p>Can run multiple times in a single frame.</p>
@@ -614,9 +597,9 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Имя переменной</th>
-                                <th>Тип</th>
-                                <th>Описание</th>
+                                <th>Variable Name</th>
+                                <th>Type</th>
+                                <th>Description</th>
                             </tr>
                         </thead>
                         <thead>
@@ -627,14 +610,14 @@
                         <tbody>
                             <tr>
                                 <td>fps</td>
-                                <td>целое</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Gets the framerate of the application.</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td>deltaTime</td>
-                                <td>десятичное</td>
+                                <td>decimal</td>
                                 <td>
                                     <p>Gets the amount of time that has passed since the last frame was drawn.</p>
                                     <p>Non-integral, valued in seconds (i.e. 0.0166666...)</p>
@@ -642,9 +625,9 @@
                             </tr>
                             <tr>
                                 <td>lang</td>
-                                <td>строка</td>
+                                <td>string</td>
                                 <td>
-                                    <p>Gets the current selected language as a short строка format.</p>
+                                    <p>Gets the current selected language as a short string format.</p>
                                     <p>(i.e. "en", "ja", "fr", etc.)</p>
                                 </td>
                             </tr>
@@ -657,12 +640,12 @@
                         <tbody>
                             <tr>
                                 <td>playerCount</td>
-                                <td>целое</td>
+                                <td>integer</td>
                                 <td>Gets the current number of active players.</td>
                             </tr>
                             <tr>
                                 <td>p1IsBlue</td>
-                                <td>логическое</td>
+                                <td>boolean</td>
                                 <td>
                                     <p>Gets a Boolean stating if Player 1 is blue. (via selecting Right in the title menu)</p>
                                     <p>1P only; Returns false if not blue, or if there are 2 or more players.</p>
@@ -670,7 +653,7 @@
                             </tr>
                             <tr>
                                 <td>characterRarities</td>
-                                <td>строка[]</td>
+                                <td>string[]</td>
                                 <td>
                                     <p>Gets each player's Character rarity.</p>
                                     <p>Possible rarities: "Poor"/"Common"/"Uncommon"/"Rare"/"Epic"/"Legendary"/"Mythical"</p>
@@ -678,7 +661,7 @@
                             </tr>
                             <tr>
                                 <td>puchicharaRarities</td>
-                                <td>строка[]</td>
+                                <td>string[]</td>
                                 <td>
                                     <p>Gets each player's Puchichara rarity.</p>
                                     <p>Possible rarities: "Poor"/"Common"/"Uncommon"/"Rare"/"Epic"/"Legendary"/"Mythical"</p>
@@ -693,7 +676,7 @@
                         <tbody>
                             <tr>
                                 <td>bpm</td>
-                                <td>десятичное[]</td>
+                                <td>decimal[]</td>
                                 <td>
                                     <p>Gets a list of numbers for each player that tells what BPM their chart is currently on.</p>
                                     <p>Can be different for each player.</p>
@@ -701,17 +684,17 @@
                             </tr>
                             <tr>
                                 <td>gauge</td>
-                                <td>десятичное[]</td>
+                                <td>decimal[]</td>
                                 <td>Gets a list of numbers between 0-100 for each player that tells where the player is on the soul gauge.</td>
                             </tr>
                             <tr>
                                 <td>isClear</td>
-                                <td>логическое[]</td>
+                                <td>boolean[]</td>
                                 <td>Gets a list of Booleans for each player that tells if each player is clearing their course.</td>
                             </tr>
                             <tr>
                                 <td>gogo</td>
-                                <td>логическое[]</td>
+                                <td>boolean[]</td>
                                 <td>Gets a list of Booleans for each player that tells if Go-Go Time is currently active.</td>
                             </tr>
                         </tbody>
@@ -723,7 +706,7 @@
                         <tbody>
                             <tr>
                                 <td>timeStamp</td>
-                                <td>десятичное</td>
+                                <td>decimal</td>
                                 <td>
                                     <p>Gets the amount of time in seconds that have passed since the chart has begun, beginning at the first measure.</p>
                                     <p>Can be negative if the chart hasn't started yet.</p>
@@ -738,7 +721,7 @@
                         <tbody>
                             <tr>
                                 <td>towerNightNum</td>
-                                <td>десятичное</td>
+                                <td>decimal</td>
                                 <td>
                                     <p>Gets a number starting at 0 and going up to (but not always ending at) 1, which changes depending on how far the player has progressed through a Tower.</p>
                                     <p>The source code determining towerNightNum's value is Math.Min(CurrentMeasure / Math.Max(140, MaxFloorCount / 2), 1);</p>
@@ -753,7 +736,7 @@
                         <tbody>
                             <tr>
                                 <td>battleState</td>
-                                <td>целое</td>
+                                <td>integer</td>
                                 <td>
                                     <p>Gets a number related to the current state of the active AI Battle, valued between -9 and 9. Default is 0.</p>
                                     <p>Zero or higher number means the player is winning. Negative number means the AI is winning.</p>
@@ -761,7 +744,7 @@
                             </tr>
                             <tr>
                                 <td>battleWin</td>
-                                <td>логическое</td>
+                                <td>boolean</td>
                                 <td>
                                     <p>Gets a Boolean stating if the player is winning (or has won) against the AI in AI Battle.</p>
                                     <p>Can also be used in the Results Screen menu.</p>
@@ -770,9 +753,9 @@
                         </tbody>
                     </table>
 
-            <h1 id="faq">Часто задаваемые вопросы</h1>
-                <p>В: Почему?</p>
-                <p>О: Я не знаю.</p>
+            <h1 id="faq">Preguntas Frecuentes</h1>
+                <p>P: ¿Por qué?</p>
+                <p>R: No sé.</p>
 
         </content>
     </body>
